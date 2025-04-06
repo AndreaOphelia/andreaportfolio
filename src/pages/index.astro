@@ -1,15 +1,165 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Button from '../components/Button.astro';
-import Link from '../components/Link.astro';
-import { Image } from 'astro:assets';
-import thumbsup from "../assets/images/thumbsup.png";
+import Button from "../components/Button.astro";
+import Link from "../components/Link.astro";
+import { Image } from "astro:assets";
 ---
+
 <MainLayout title="Titel">
-	<article>
-		<h1>Index overskrift</h1>
-		<Button>Klik!</Button>
-		<p>Link til <Link href="https://www.kea.dk" target="_blank">En anden side</Link></p>
-		<Image src={thumbsup} alt=""></Image>
-	</article>
+  <section class="relative h-screen" id="section1">
+    <div class="">
+      <h2 class="text-7xl md:text-8xl font-bold mb-10">
+        <span style="font-family: 'Futura Cyrillic', sans-serif;"
+          >ANDREA OPHELIA TOTH</span
+        >
+      </h2>
+    </div>
+    <div
+      class="absolute inset-0 grid grid-cols-7 grid-rows-7 gap-4 w-full h-full max-w-7xl mx-auto"
+    >
+      <p
+        class="parallax-image col-span-5 row-span-2 translate-x-10 translate-y-60 uppercase"
+        data-speed="0.02"
+      >
+        Velkommen til mit portfolio
+      </p>
+
+      <img
+        src="/andrea.png"
+        alt="Billede af Andrea"
+        class="parallax-image col-span-4 row-span-4 max-w-full h-auto w-50 sm:w-50 md:w-60 lg:w-70 translate-x-10 translate-y-30"
+        data-speed="0.1"
+      />
+      <p
+        class="parallax-image uppercase col-span-5 row-span-2 translate-x-40 translate-y-1 max-w-[60ch] justify-self-end"
+        data-speed="0.05"
+      >
+        Mit navn er Andrea, jeg er UX/UI designer og udvikler med speciale i
+        digitalt design. Jeg elsker at lave sjove og nytænkende designs, der
+        skaber værdi for brugerne og virksomhederne.
+      </p>
+    </div>
+  </section>
+  <section class="mt-30" id="section2">
+    <h2 class="text-7xl md:text-8xl font-bold mb-10 mt-20">
+      <span style="font-family: 'Futura Cyrillic', sans-serif;"
+        >TIDLIGERE PROJEKTER</span
+      >
+    </h2>
+    <div
+      class="inset-0 grid grid-cols-[1fr_2fr] gap-4 w-full h-full max-w-7xl mx-auto"
+    >
+      <div>
+        <p>[01]</p>
+        <a href="/stjernemagi" class="block">
+          <h3
+            class="text-2xl mb-4 uppercase"
+            style="font-family: 'Futura Cyrillic', sans-serif;"
+          >
+            Stjernemagikerne
+          </h3>
+        </a>
+        <p>Et projekt skabt med KidsAid som Case.</p>
+      </div>
+      <div>
+        <a href="/stjernemagi">
+          <img
+            src="./stjernemagikerne1.png"
+            alt="Stjernemagikerne"
+            class="w-full h-auto hover:scale-105 transition-transform duration-300 cursor-pointer"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      class="inset-0 grid grid-cols-[2fr_1fr] gap-4 w-full h-full max-w-7xl mx-auto mt-10"
+    >
+      <div>
+        <a href="/monten">
+          <img
+            src="./monten.png"
+            alt="Stjernemagikerne"
+            class="w-full h-auto hover:scale-105 transition-transform duration-300 cursor-pointer"
+          /></a
+        >
+      </div>
+      <div>
+        <p>[02]</p>
+        <h3
+          class="text-2xl mb-4 uppercase"
+          style="font-family: 'Futura Cyrillic', sans-serif;"
+        >
+          MØNTEN
+        </h3>
+        <p>En Case til cafe Mønten</p>
+      </div>
+    </div>
+    <div
+      class="inset-0 grid grid-cols-[1fr_2fr] gap-4 w-full h-full max-w-7xl mx-auto mt-10"
+    >
+      <div>
+        <p>[03]</p>
+        <a href="/karrusel" class="block">
+          <h3
+            class="text-2xl mb-4 uppercase"
+            style="font-family: 'Futura Cyrillic', sans-serif;"
+          >
+            Karrusel
+          </h3>
+        </a>
+        <p>Et projekt skabt med Karrusel Festival som Case.</p>
+      </div>
+      <div>
+        <a href="/karrusel">
+          <img
+            src="./karrusel.png"
+            alt="Karrusel Festival"
+            class="w-full h-auto hover:scale-105 transition-transform duration-300 cursor-pointer"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      class="inset-0 grid grid-cols-[2fr_1fr] gap-4 w-full h-full max-w-7xl mx-auto mt-10"
+    >
+      <div>
+        <a href="/savetheturtles">
+          <img
+            src="./savetheturtles.png"
+            alt="Save the Turtles"
+            class="w-full h-auto hover:scale-105 transition-transform duration-300 cursor-pointer"
+          />
+        </a>
+      </div>
+      <div>
+        <p>[04]</p>
+        <h3
+          class="text-2xl mb-4 uppercase"
+          style="font-family: 'Futura Cyrillic', sans-serif;"
+        >
+          Save The Turtles
+        </h3>
+        <p>En projekt til Save the Turtles</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    /* Import af Motion One bibliotek */
+    import { animate, stagger, inView, scroll } from "motion";
+
+    //parallax effekt på skilpadder og H2
+    window.addEventListener("scroll", function () {
+      const scrollPosition = window.scrollY;
+      document.querySelectorAll(".parallax-image").forEach((image) => {
+        const speed = image.getAttribute("data-speed");
+        image.style.transform = `translateY(${scrollPosition * speed}px)`;
+      });
+
+      document.querySelectorAll("h2").forEach((heading) => {
+        const speed = 0.04; // Adjust speed for H2
+        heading.style.transform = `translateY(${scrollPosition * speed}px)`;
+      });
+    });
+  </script>
 </MainLayout>

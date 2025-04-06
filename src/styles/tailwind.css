@@ -1,11 +1,28 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @plugin '@tailwindcss/typography';
 @plugin '@tailwindcss/forms';
 
-
 @theme {
   /* Her tilføjes theme variable // tokens */
+}
+@theme {
+  /*Infinite scroll animation*/
+  --animate-infinite-scroll: infinite-scroll 25s linear infinite;
+
+  @keyframes infinite-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+@theme {
+  /*custom cursor*/
+  --handcursor: url(/cursor.svg) 25 25, pointer;
 }
 
 @layer base {
@@ -18,9 +35,51 @@
   }
 }
 
-@layer components{
-
+@layer base {
+  section {
+    @apply cursor-(--handcursor);
+  }
 }
-@layer utilities{
-  
+
+.bg-grid {
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px; /* Juster størrelsen af gitteret */
+}
+
+p {
+  font-size: 14px; /* 16px */
+  margin-bottom: 1rem; /* Tilføjer margin-bottom */
+  max-width: 65ch;
+}
+
+@layer components {
+}
+@layer utilities {
+}
+
+@font-face {
+  font-family: "Myriad Pro";
+  src: url("../fonts/MYRIADPRO-REGULAR.OTF") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roslindale Display";
+  src: url("../fonts/Roslindale-DisplayCondensedRegular-Testing.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Futura Cyrillic";
+  src: url("../fonts/FuturaCyrillicMedium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
